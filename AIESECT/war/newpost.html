@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Englebert"/>
+    <link rel="stylesheet" type="text/css" href="stylesheetnewpost.css"/>
+        <meta charset="utf-8" />
+           
+              
+             <div class = "encabezado"> 
+                <IMG SRC="logo.jpg" class="logo">
+              
+                <label class = "logoutlabel"> Logout </label>
+ 
+                <IMG SRC="lusac.jpg" class="selfie">  
+
+           
+            </div>
+            
+        
+    <title ></title>
+    
+</head>
+<body class ="bdy">
+    <div class = "menu">
+      
+                    <form>
+                        <button type="submit"  class="btnN">News</button>
+                        <button type="submit"  class="btnE">Eventos</button>
+                        <button type="submit"  class="btnM">Metas</button>
+
+                    </form>     
+                
+           
+    </div>
+    <form>
+    <div class = "lpost">  </div>
+        <div class="custom-input-file">
+            <input class="input-file" type="file" id="files" name="files[]" multiple />
+            Examinar 
+        
+        </div>
+
+    <div class = "ipost">
+        <script type="text/javascript">
+            if (window.FileReader) 
+            {
+                //then your code goes here
+            } 
+            else 
+            {
+                alert('Su navegador no soporta el lector de archivos');
+            }
+        </script>
+        
+        <output id="list" class = "OutImage"></output>
+
+        <script>
+            document.getElementById('files').addEventListener('change', handleFileSelect, false);
+            function handleFileSelect(evt) 
+            {
+                var files = evt.target.files;
+                var f = files[0];
+                var reader = new FileReader();
+         
+                reader.onload = (function(theFile) 
+                {
+                    return function(e) 
+                    {
+                    document.getElementById('list').innerHTML = ['<img src="', e.target.result,'" title=', theFile.name,' height= "250" width="400"/>'].join('');
+                    };
+                })(f);
+           
+                reader.readAsDataURL(f);
+            }
+          
+        </script>
+    </div>
+    <div class = "tpost">
+         <input type="text" id="idtitlepost" placeholder="Titulo del Post" pattern="^[a-zA-Z][a-zA-Z0-9-_.]{8,20}$" required="required" class="titlepost" />
+    </div>
+    <div class = "dpost">
+        <input type="text" id="iddescpost" placeholder="Descripcion Post" pattern="^[a-zA-Z][a-zA-Z0-9-_.]{8,20}$" required="required" class="descpost" />
+        <TEXTAREA id="iddescpost" placeholder="Descripcion Post" pattern="^[a-zA-Z][a-zA-Z0-9-_.]{8,20}$" required="required" class="descpost" NAME="Address" ROWS= 3 COLS=30 ></textarea>
+</TEXTAREA>
+    </div>
+    </form>  
+    
+    <div class="contenedor"> 
+       
+    </div>
+    
+</body>
+
+</html>
